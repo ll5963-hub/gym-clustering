@@ -1,0 +1,35 @@
+gym_members.csv: 330 rows, 7 columns, average extras spend $26.01
+Train: 231 members   Test: 99 members
+
+k   train spread   test spread
+1         1386.0         600.7
+2          950.3         403.6
+3          611.5         284.2
+4          336.0         150.0
+5          310.5         141.4
+6          287.2         130.6
+7          271.9         130.5
+8          254.6         125.3
+
+Test spread: k=1 (baseline) 600.7  vs  k=4 150.0 (75% lower)
+
+=== v1 centroids (training members, original units) ===
+    age  visits_per_month  avg_visit_minutes  classes_per_month  months_member  monthly_extras_spend  train_members             segment  gets_credit
+0  27.3               3.0               40.7                0.9            5.8                   9.0             46  Drifting newcomers         True
+1  64.2              12.0               46.5                3.9           57.8                  17.4             45       Loyal seniors        False
+2  33.2              16.0               64.5                0.9           30.3                  24.9             79        Gym regulars        False
+3  42.6               9.4               55.1                7.0           24.0                  47.3             61         Class-goers        False
+
+New member -> Drifting newcomers, credit: yes
+
+=== All 330 members by segment ===
+                    members  avg_extras_spend  net_if_credited  gets_credit
+segment                                                                    
+Class-goers              91              46.9             -895        False
+Drifting newcomers       70               9.3              185         True
+Gym regulars            109              24.6             -445        False
+Loyal seniors            60              16.4              -45        False
+
+Baseline (credit to all 330 members): $-1,200 per month
+v1 (credit to 70 members in chosen segments): $185 per month
+Difference: $1,385 per month, $16,620 per year
